@@ -61,8 +61,13 @@ a date, an expense category and a receipt (an image or a PDF).
 rejection returns the claim to the employee, who can correct and resubmit it.
 - **Visibility** — an Employee sees only their own claims, a Manager only the
 claims of the employees reporting to them, and Finance every approved claim.
+- **Reporting line** — who reports to whom is not held in the product; a
+manager's team is resolved from the organization directory. *assumed*
 - **Payroll hand-off** — finance downloads the approved claims for a chosen
 period as a file; the product does not talk to a payroll system directly.
+- **Export format** — finance gets a CSV file with one row per expense line,
+carrying the employee, the expense date, the category and the amount, together
+with the claim the row belongs to. *assumed*
 - **No double payout** — a claim included in an export is marked as exported and
 does not appear in a later export.
 - **Notifications** — a claim's status is visible in the product; nothing is
@@ -81,15 +86,14 @@ no money itself.
 policy enforcement.
 - Multiple currencies and currency conversion.
 - Mobile applications.
-- Self-service administration of categories, approval thresholds, or who reports
-to whom.
+- Administration of expense categories, approval thresholds, or reporting lines
+— the product maintains none of them.
 - Email or chat notifications.
 
 ## Open Questions
 
-1. What file format and column layout does the payroll process expect for the
-export?
-2. How does the product know which manager an employee reports to — is the
-reporting line held in an HR system, or must it be maintained in this
-application?
+None at present.
 
+
+
+&nbsp;
