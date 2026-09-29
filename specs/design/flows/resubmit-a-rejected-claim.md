@@ -29,3 +29,4 @@ sequenceDiagram
     expense-api->>expense-db: status submitted again
     expense-api-->>expense-webapp: awaiting approval
 ```
+

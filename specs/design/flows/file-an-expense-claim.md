@@ -32,3 +32,4 @@ sequenceDiagram
         expense-api-->>expense-webapp: claim awaiting approval
     end
 ```
+

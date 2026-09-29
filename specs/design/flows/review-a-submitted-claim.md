@@ -34,3 +34,4 @@ sequenceDiagram
         expense-api-->>expense-webapp: the approved claim
     end
 ```
+

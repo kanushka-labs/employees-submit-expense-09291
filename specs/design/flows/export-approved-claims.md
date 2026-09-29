@@ -24,3 +24,4 @@ sequenceDiagram
     expense-api->>expense-db: read the exported lines
     expense-api-->>expense-webapp: CSV, one row per expense line
 ```
+
