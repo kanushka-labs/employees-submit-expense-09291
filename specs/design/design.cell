@@ -1,0 +1,15 @@
+title Employees Submit Expense Claims
+
+component expense-webapp as "Expense Claims Web App" web-application
+component expense-api as "Expense Claims API" service
+component expense-db as "Claims Database" database
+
+east thunder-app as "Thunder Auth" identity-server
+
+north -> expense-webapp
+north -> expense-api
+
+expense-webapp -> expense-api
+expense-webapp -> thunder-app
+expense-api -> thunder-app
+expense-api -> expense-db

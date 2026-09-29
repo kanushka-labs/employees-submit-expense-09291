@@ -1,0 +1,26 @@
+{
+  "name": "expense-webapp",
+  "type": "web-application",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "buildpack": "docker",
+  "appPath": "expense-webapp",
+  "entrypoint": "deployment/web-application",
+  "exposure": "internet",
+  "dependencies": [
+    {
+      "kind": "component",
+      "name": "expense-api",
+      "description": "Every screen's data — the caller's claims, the team's approval queue, and the payroll export."
+    },
+    {
+      "kind": "platform-resource",
+      "name": "thunder-app",
+      "resourceType": "thunder-app",
+      "description": "Signs the user in and returns them to their role's home screen."
+    }
+  ],
+  "description": "The product's only user surface: an employee files a claim and follows it, a manager reviews the team's claims and decides them, and finance exports a period to payroll. A TypeScript + React single-page app built on the organization's design system, honouring wireframes.dsl screen for screen, reached through the internet gateway and signing users in through Thunder. It holds no credentials and no data of its own, and it makes no decision the API does not already enforce.",
+  "stories": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+}

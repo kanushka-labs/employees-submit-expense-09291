@@ -1,0 +1,27 @@
+{
+  "name": "expense-api",
+  "type": "service",
+  "version": "0.1.0",
+  "language": "Ballerina",
+  "buildpack": "docker",
+  "appPath": "expense-api",
+  "entrypoint": "deployment/service",
+  "exposure": "internet",
+  "dependencies": [
+    {
+      "kind": "platform-resource",
+      "name": "expense-db",
+      "resourceType": "postgres-cnpg",
+      "description": "Stores every claim with its lines and their receipts, and each payroll export."
+    },
+    {
+      "kind": "platform-resource",
+      "name": "thunder-app",
+      "resourceType": "thunder-app",
+      "description": "Verifies the signed-in caller's token and yields their username and directory groups, which scope every read."
+    }
+  ],
+  "description": "Owns every expense claim: its lines and their receipts, the manager's decision, and the payroll export. Serves the contract in openapi.yaml on the default http endpoint, resolving the caller from the gateway's signed assertion and scoping each read to the caller's own rows, their team's rows, or every row, as the path says. It stores receipts as bytes beside the lines they belong to, and stamps a claim as exported when an export includes it. It does NOT sign users in, hold a reporting line of its own, talk to a payroll system, or serve any user interface.",
+  "stories": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "skillsPinned": ["openapi-conventions", "ballerina", "api-management", "thunder-authentication"]
+}

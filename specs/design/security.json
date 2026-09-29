@@ -1,0 +1,53 @@
+{
+  "version": 3,
+  "permissions": [
+    {
+      "resource": "claims",
+      "component": "expense-api",
+      "description": "Expense claims, their approval, and the payroll export",
+      "actions": [
+        { "handle": "read", "description": "The caller's own claims and their receipts" },
+        { "handle": "submit", "description": "Create, correct and send the caller's own claims" },
+        { "handle": "withdraw", "description": "Take back one of the caller's own claims that is not yet decided" },
+        { "handle": "review-team", "description": "Claims submitted by employees sharing a directory group with the caller, and the decision on them" },
+        { "handle": "read-all", "description": "Every claim of the company" },
+        { "handle": "export", "description": "Run a payroll export and download it" }
+      ]
+    }
+  ],
+  "groups": [
+    { "name": "Employees", "description": "Everyone who files expense claims" },
+    { "name": "Managers", "description": "Those who decide their team's expense claims" },
+    { "name": "Finance", "description": "Those who export approved claims to payroll" }
+  ],
+  "roles": [
+    {
+      "name": "Employee",
+      "description": "Files expense claims, tracks them, withdraws one before it is decided, and corrects one that was rejected.",
+      "stories": [1, 2, 3, 4, 5],
+      "grants": ["claims:read", "claims:submit", "claims:withdraw"],
+      "assignTo": ["Employees"]
+    },
+    {
+      "name": "Manager",
+      "description": "The Manager actor: files their own claims like any employee, and decides the claims submitted by employees sharing their directory groups.",
+      "stories": [1, 2, 3, 4, 5, 6, 7, 8],
+      "grants": ["claims:read", "claims:submit", "claims:withdraw", "claims:review-team"],
+      "assignTo": ["Managers"]
+    },
+    {
+      "name": "PayrollExporter",
+      "description": "The Finance actor: sees every approved claim and exports a period's worth for payroll.",
+      "stories": [9, 10],
+      "grants": ["claims:read-all", "claims:export"],
+      "assignTo": ["Finance"]
+    }
+  ],
+  "testUsers": [
+    { "username": "test-employee-1", "roles": ["Employee"] },
+    { "username": "test-employee-2", "roles": ["Employee"] },
+    { "username": "test-manager-1", "roles": ["Manager"] },
+    { "username": "test-manager-2", "roles": ["Manager"] },
+    { "username": "test-payroll-exporter", "roles": ["PayrollExporter"] }
+  ]
+}
