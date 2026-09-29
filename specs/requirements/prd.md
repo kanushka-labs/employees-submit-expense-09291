@@ -30,26 +30,26 @@ payroll.
 ## User Stories
 
 1. As an Employee, I want to sign in with my existing work account, so that I
- don't have to keep another password.
+don't have to keep another password.
 2. As an Employee, I want to file a claim as several line items — an amount,
- a date, a category and a receipt on each — so that a whole trip goes in as one
- submission.
+a date, a category and a receipt on each — so that a whole trip goes in as one
+submission.
 3. As an Employee, I want to see my claims and where each one stands, so that
- I know what is still awaiting approval and what has been approved.
+I know what is still awaiting approval and what has been approved.
 4. As an Employee, I want to withdraw a claim I have submitted but that has not
- been decided yet, so that I can fix a mistake before it is approved.
+been decided yet, so that I can fix a mistake before it is approved.
 5. As an Employee, I want to correct and resubmit a claim my manager rejected, so
- that I don't have to start it again from nothing.
+that I don't have to start it again from nothing.
 6. As a Manager, I want to see the claims my team has submitted, so that I can
- review them in one place.
+review them in one place.
 7. As a Manager, I want each line item with its receipt in front of me, so that
- I can judge the claim before deciding on it.
+I can judge the claim before deciding on it.
 8. As a Manager, I want to approve or reject a claim with a comment, so that the
- employee knows the outcome and, when it is rejected, why.
+employee knows the outcome and, when it is rejected, why.
 9. As Finance, I want to see all approved claims and what they total, so that I
- know what is waiting to reach payroll.
+know what is waiting to reach payroll.
 10. As Finance, I want to export the approved claims for a date range, so that
- payroll can pay them.
+payroll can pay them.
 
 ## Product Decisions
 
@@ -88,8 +88,8 @@ to whom.
 ## Open Questions
 
 1. What file format and column layout does the payroll process expect for the
- export?
+export?
 2. How does the product know which manager an employee reports to — is the
- reporting line held in an HR system, or must it be maintained in this
- application?
+reporting line held in an HR system, or must it be maintained in this
+application?
 
