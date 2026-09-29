@@ -7,21 +7,59 @@
   "appPath": "expense-api",
   "entrypoint": "deployment/service",
   "exposure": "internet",
+  "stories": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "description": "Owns every expense claim: its lines and their receipts, the manager's decision, and the payroll export. Serves the contract in openapi.yaml on the default http endpoint, resolving the caller from the gateway's signed assertion and scoping each read to the caller's own rows, their team's rows, or every row, as the path says. It stores receipts as bytes beside the lines they belong to, and stamps a claim as exported when an export includes it. It does NOT sign users in, hold a reporting line of its own, talk to a payroll system, or serve any user interface.",
   "dependencies": [
     {
       "kind": "platform-resource",
       "name": "expense-db",
+      "description": "Stores every claim with its lines and their receipts, and each payroll export.",
       "resourceType": "postgres-cnpg",
-      "description": "Stores every claim with its lines and their receipts, and each payroll export."
+      "wiring": {
+        "ref": "employees-submit-b4e1d402",
+        "envBindings": {
+          "dbname": "EXPENSE_DB_DBNAME",
+          "host": "EXPENSE_DB_HOST",
+          "password": "EXPENSE_DB_PASSWORD",
+          "port": "EXPENSE_DB_PORT",
+          "user": "EXPENSE_DB_USER"
+        }
+      }
     },
     {
       "kind": "platform-resource",
       "name": "thunder-app",
+      "description": "Verifies the signed-in caller's token and yields their username and directory groups, which scope every read.",
       "resourceType": "thunder-app",
-      "description": "Verifies the signed-in caller's token and yields their username and directory groups, which scope every read."
+      "wiring": {
+        "ref": "employees-submit-fa5e848d",
+        "envBindings": {
+          "client_id": "THUNDER_APP_CLIENT_ID",
+          "issuer": "THUNDER_APP_ISSUER",
+          "jwks_url": "THUNDER_APP_JWKS_URL",
+          "resource": "THUNDER_APP_RESOURCE",
+          "scopes": "THUNDER_APP_SCOPES"
+        }
+      }
     }
   ],
-  "description": "Owns every expense claim: its lines and their receipts, the manager's decision, and the payroll export. Serves the contract in openapi.yaml on the default http endpoint, resolving the caller from the gateway's signed assertion and scoping each read to the caller's own rows, their team's rows, or every row, as the path says. It stores receipts as bytes beside the lines they belong to, and stamps a claim as exported when an export includes it. It does NOT sign users in, hold a reporting line of its own, talk to a payroll system, or serve any user interface.",
-  "stories": [2, 3, 4, 5, 6, 7, 8, 9, 10],
-  "skillsPinned": ["openapi-conventions", "ballerina", "api-management", "thunder-authentication"]
+  "exposesAPI": {
+    "auth": "end-user-required"
+  },
+  "skillsPinned": [
+    "openapi-conventions",
+    "ballerina",
+    "api-management",
+    "thunder-authentication"
+  ]
 }

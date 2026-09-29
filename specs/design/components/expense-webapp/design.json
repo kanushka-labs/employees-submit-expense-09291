@@ -7,20 +7,56 @@
   "appPath": "expense-webapp",
   "entrypoint": "deployment/web-application",
   "exposure": "internet",
+  "stories": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "description": "The product's only user surface: an employee files a claim and follows it, a manager reviews the team's claims and decides them, and finance exports a period to payroll. A TypeScript + React single-page app built on the organization's design system, honouring wireframes.dsl screen for screen, reached through the internet gateway and signing users in through Thunder. It holds no credentials and no data of its own, and it makes no decision the API does not already enforce.",
   "dependencies": [
     {
       "kind": "component",
       "name": "expense-api",
-      "description": "Every screen's data — the caller's claims, the team's approval queue, and the payroll export."
+      "description": "Every screen's data — the caller's claims, the team's approval queue, and the payroll export.",
+      "wiring": {
+        "endpoint": {
+          "component": "employees-submit-expense-09291-expense-api",
+          "name": "http",
+          "visibility": "project",
+          "envBindings": {
+            "address": "EXPENSE_API_URL"
+          }
+        }
+      }
     },
     {
       "kind": "platform-resource",
       "name": "thunder-app",
+      "description": "Signs the user in and returns them to their role's home screen.",
       "resourceType": "thunder-app",
-      "description": "Signs the user in and returns them to their role's home screen."
+      "wiring": {
+        "ref": "employees-submit-fa5e848d",
+        "envBindings": {
+          "client_id": "THUNDER_APP_CLIENT_ID",
+          "issuer": "THUNDER_APP_ISSUER",
+          "jwks_url": "THUNDER_APP_JWKS_URL",
+          "resource": "THUNDER_APP_RESOURCE",
+          "scopes": "THUNDER_APP_SCOPES"
+        }
+      }
     }
   ],
-  "description": "The product's only user surface: an employee files a claim and follows it, a manager reviews the team's claims and decides them, and finance exports a period to payroll. A TypeScript + React single-page app built on the organization's design system, honouring wireframes.dsl screen for screen, reached through the internet gateway and signing users in through Thunder. It holds no credentials and no data of its own, and it makes no decision the API does not already enforce.",
-  "stories": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+  "skillsPinned": [
+    "wireframes",
+    "react-webapp",
+    "oxygen-ui-design-system",
+    "thunder-authentication"
+  ]
 }
