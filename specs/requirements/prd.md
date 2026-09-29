@@ -56,21 +56,21 @@ payroll can pay them.
 - **Sign-in** — every user signs in with SSO through the platform identity
 provider; the product issues no passwords of its own. (Organization default.)
 - **Claim shape** — a claim carries one or more line items, each with an amount,
-a date, an expense category and a receipt (an image or a PDF). *assumed*
+a date, an expense category and a receipt (an image or a PDF).
 - **Approval** — one step: the employee's manager approves or rejects. A
-rejection returns the claim to the employee, who can correct and resubmit it. *assumed*
+rejection returns the claim to the employee, who can correct and resubmit it.
 - **Visibility** — an Employee sees only their own claims, a Manager only the
-claims of the employees reporting to them, and Finance every approved claim. *assumed*
+claims of the employees reporting to them, and Finance every approved claim.
 - **Payroll hand-off** — finance downloads the approved claims for a chosen
-period as a file; the product does not talk to a payroll system directly. *assumed*
+period as a file; the product does not talk to a payroll system directly.
 - **No double payout** — a claim included in an export is marked as exported and
-does not appear in a later export. *assumed*
+does not appear in a later export.
 - **Notifications** — a claim's status is visible in the product; nothing is
-emailed in this version. *assumed*
+emailed in this version.
 - **Categories** — a fixed list of expense categories ships with the product;
-there is no administration of that list in this version. *assumed*
+there is no administration of that list in this version.
 - **Currency** — every amount is in the company's single currency; no currency
-conversion. *assumed*
+conversion.
 
 ## Out of Scope
 
